@@ -5,6 +5,30 @@ Lernfeld 7 - Cyber-physische Systeme ergänzen - Projekt "HomeSeck"
 
 # Technische Projektdokumentation: HomeSeck-Sicherheitssystem
 
+# Inhaltsverzeichnis
+
+- [1. Einleitung](#1-einleitung)
+- [2. Systemarchitektur](#2-systemarchitektur)
+- [3. Hardware-Setup](#3-hardware-setup)
+  - [3.1 Raspberry Pi 5](#31-raspberry-pi-5)
+  - [3.2 ESP32-Module](#32-esp32-module)
+  - [3.3 RFID-Scanner](#33-rfid-scanner)
+  - [3.4 PIR-Bewegungsmelder](#34-pir-bewegungsmelder)
+  - [3.5 Summer](#35-summer)
+- [4. Software-Konfiguration](#4-software-konfiguration)
+  - [4.1 Installation von Home Assistant OS auf Raspberry Pi 5](#41-installation-von-home-assistant-os-auf-raspberry-pi-5)
+  - [4.2 Installation des ESPHome-Add-ons in Home Assistant](#42-installation-des-esphome-add-ons-in-home-assistant)
+  - [4.3 Konfiguration der ESP32-Module mit ESPHome](#43-konfiguration-der-esp32-module-mit-esphome)
+  - [4.4 Konfiguration des Raspberry Pi GPIO für den Summer](#44-konfiguration-des-raspberry-pi-gpio-für-den-summer)
+- [5. Integration und Funktionalität](#5-integration-und-funktionalität)
+  - [5.1 ESPHome-Integration](#51-esphome-integration)
+  - [5.2 Automatisierungen](#52-automatisierungen)
+- [6. Benutzeroberfläche](#6-benutzeroberfläche)
+  - [6.1 Haupt-Dashboard](#61-haupt-dashboard)
+  - [6.2 Sicherheits-Dashboard](#62-sicherheits-dashboard)
+- [7. Bedienung und Nutzung](#7-bedienung-und-nutzung)
+- [8. Fazit](#8-fazit)
+
 ## 1. Einleitung
 
 Das HomeSeck-Sicherheitssystem ist darauf ausgelegt, eine robuste und flexible Lösung für die Haussicherheit zu bieten. Der Name „HomeSeck“ kombiniert „Home“ (Zuhause), „Security“ (Sicherheit) und Seck als Referenz zu (Home)-Sick und spielt auf die Sorge um den Schutz des Zuhauses an, wenn man abwesend ist. Durch die Integration von Hardware- und Softwarekomponenten gewährleistet HomeSeck, dass Ihr Zuhause sicher bleibt. Das System basiert auf einem Raspberry Pi 5 mit Home Assistant OS, der als zentrale Steuereinheit für die Verwaltung von Sicherheitsgeräten wie RFID-Scannern und Bewegungsmeldern dient.
