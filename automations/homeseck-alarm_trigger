@@ -1,0 +1,17 @@
+alias: homeseck-alarm_trigger
+description: ""
+triggers:
+  - trigger: state
+    entity_id: sensor.pir1
+    to: active
+conditions:
+  - condition: state
+    entity_id: alarm_control_panel.homeseck_alarm_panel
+    state: armed_away
+actions:
+  - action: alarm_control_panel.alarm_trigger
+    target:
+      entity_id: alarm_control_panel.homeseck_alarm_panel
+    data:
+      code: "1234"
+mode: single
