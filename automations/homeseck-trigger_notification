@@ -1,0 +1,12 @@
+alias: homeseck-trigger_notification
+description: ""
+triggers:
+  - trigger: state
+    entity_id: homeseck_security.home_alarm
+    to: triggered
+conditions: []
+actions:
+  - action: notify.notify
+    data:
+      message: The alarm has been triggered. A check is advised.
+mode: single
