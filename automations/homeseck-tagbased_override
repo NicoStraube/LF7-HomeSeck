@@ -1,0 +1,47 @@
+alias: homeseck-tagbased_override
+description: >-
+  This automation will handle the manual physical override of the alarm system.
+  This can switch between the following three states: (disarmed <> armed <>
+  triggered)
+triggers:
+  - trigger: tag
+    tag_id: 17-3C-13-D3
+    variables:
+      tag_friendly_name: Ricardo
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: alarm_control_panel.homeseck_alarm_panel
+            state: triggered
+        sequence:
+          - action: alarm_control_panel.alarm_disarm
+            metadata: {}
+            data:
+              code: "1234"
+            target:
+              entity_id: alarm_control_panel.homeseck_alarm_panel
+      - conditions:
+          - condition: state
+            entity_id: alarm_control_panel.homeseck_alarm_panel
+            state: armed_away
+        sequence:
+          - action: alarm_control_panel.alarm_disarm
+            metadata: {}
+            data:
+              code: "1234"
+            target:
+              entity_id: alarm_control_panel.homeseck_alarm_panel
+      - conditions:
+          - condition: state
+            entity_id: alarm_control_panel.homeseck_alarm_panel
+            state: disarmed
+        sequence:
+          - action: alarm_control_panel.alarm_arm_away
+            metadata: {}
+            data:
+              code: "1234"
+            target:
+              entity_id: alarm_control_panel.homeseck_alarm_panel
+mode: single
