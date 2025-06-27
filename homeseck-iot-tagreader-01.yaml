@@ -1,0 +1,55 @@
+esphome:
+  name: homeseck-iot-tagreader-01
+  friendly_name: homeseck-iot-tagreader-01
+
+esp8266:
+  board: nodemcuv2
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: ""
+
+ota:
+  - platform: esphome
+    password: ""
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  manual_ip: 
+    static_ip: 192.168.0.16
+    gateway: 192.168.0.1
+    subnet: 255.255.255.0
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Homeseck-Iot-Tagreader-01"
+    password: ""
+
+# RC522 RFID reader
+spi:
+  clk_pin: D0 # SCK on this board
+  mosi_pin: D1 # MOSI (misspelt MOIS)
+  miso_pin: D2 # MISO
+
+rc522_spi:
+  cs_pin: D3 # SDA 
+#  reset_pin: 4 # RST
+  on_tag: 
+    then:
+      - homeassistant.tag_scanned: !lambda 'return x;' 
+      - rtttl.play: "short:d=4,o=5,b=100:c"
+
+# Buzzer output
+output:
+  - platform: esp8266_pwm
+    pin: D8
+    id: buzzer_output
+
+rtttl:
+  output: buzzer_output
+  id: rtttl_buzzer
