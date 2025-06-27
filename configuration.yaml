@@ -1,0 +1,16 @@
+# HomeSeck alarm control panel definition
+alarm_control_panel:
+  - platform: manual
+    name: HomeSeck alarm panel
+    unique_id: homeseck_security
+    arming_time: 10
+    delay_time: 5
+    trigger_time: 7
+    arming_states:
+      - armed_away
+      - armed_home
+    disarmed:
+      trigger_time: 0
+    armed_home:
+      arming_time: 0
+      delay_time: 0
